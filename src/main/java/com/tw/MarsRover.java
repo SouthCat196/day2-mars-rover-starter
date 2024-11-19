@@ -21,20 +21,26 @@ public class MarsRover {
     }
 
     public String executeCommand(String command) {
-        if (Command.L.getCommand().equals(command)) {
-            turnLeft();
-        }
-        if (Command.R.getCommand().equals(command)) {
-            turnRight();
-        }
-        if (Command.M.getCommand().equals(command)) {
-            moveForward();
-        }
-        if (Command.B.getCommand().equals(command)) {
-            moveBackward();
-        }
+        command.chars()
+                .mapToObj(c -> (char) c)
+                .forEach(this::executeCommandItem);
 
         return showStatus();
+    }
+
+    private void executeCommandItem(char commandItem) {
+        if (Command.L.getCommand() == commandItem) {
+            turnLeft();
+        }
+        if (Command.R.getCommand() == (commandItem)) {
+            turnRight();
+        }
+        if (Command.M.getCommand() == (commandItem)) {
+            moveForward();
+        }
+        if (Command.B.getCommand() == (commandItem)) {
+            moveBackward();
+        }
     }
 
     private void moveBackward() {

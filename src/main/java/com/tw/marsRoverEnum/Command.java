@@ -1,18 +1,18 @@
 package com.tw.marsRoverEnum;
 
 public enum Command {
-    M("M"),
-    L("L"),
-    R("R"),
-    B("B");
+    M('M'),
+    L('L'),
+    R('R'),
+    B('B');
 
-    private final String command;
+    private final char command;
 
-    Command(String command) {
+    Command(char command) {
         this.command = command;
     }
 
-    public String getCommand() {
+    public char getCommand() {
         return command;
     }
 
