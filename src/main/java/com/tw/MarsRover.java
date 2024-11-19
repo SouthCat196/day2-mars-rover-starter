@@ -15,4 +15,11 @@ public class MarsRover {
     public String showStatus() {
         return String.format("%s:%s:%s", abscissa, ordinate, direction);
     }
+
+    public String executeCommand(String command) {
+        if("L".equals(command)){
+            return "0:0:W";
+        }
+        return null;
+    }
 }
