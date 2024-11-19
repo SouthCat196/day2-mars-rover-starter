@@ -58,7 +58,7 @@ public class MarsRoverTest {
         assertEquals("0:-1:N", report);
     }
 
-    MarsRover build01EMarsRover(){
+    MarsRover build01EMarsRover() {
         MarsRover marsRover = new MarsRover();
         marsRover.executeCommand("M");
         marsRover.executeCommand("R");
@@ -101,7 +101,7 @@ public class MarsRoverTest {
         assertEquals("-1:1:E", report);
     }
 
-    MarsRover build10SMarsRover(){
+    MarsRover build10SMarsRover() {
         MarsRover marsRover = new MarsRover();
         marsRover.executeCommand("R");
         marsRover.executeCommand("M");
@@ -145,7 +145,7 @@ public class MarsRoverTest {
         assertEquals("1:1:S", report);
     }
 
-    MarsRover build11WMarsRover(){
+    MarsRover build11WMarsRover() {
         MarsRover marsRover = new MarsRover();
         marsRover.executeCommand("R");
         marsRover.executeCommand("M");
@@ -189,6 +189,15 @@ public class MarsRoverTest {
         String report = marsRover.executeCommand("B");
 
         assertEquals("2:1:W", report);
+    }
+
+    @Test
+    void should_return_2_1_S_when_execute_command_MRMRMLMLMRR_given_0_0_N() {
+        MarsRover marsRover = new MarsRover();
+
+        String report = marsRover.executeCommand("MRMRMLMLMRR");
+
+        assertEquals("2:1:S", report);
     }
 
 }
