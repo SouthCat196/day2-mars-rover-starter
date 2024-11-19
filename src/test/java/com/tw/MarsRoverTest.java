@@ -58,11 +58,16 @@ public class MarsRoverTest {
         assertEquals("0:-1:N", report);
     }
 
-    @Test
-    void should_face_north_when_execute_command_l_given_0_1_E() {
+    MarsRover build01EMarsRover(){
         MarsRover marsRover = new MarsRover();
         marsRover.executeCommand("M");
         marsRover.executeCommand("R");
+        return marsRover;
+    }
+
+    @Test
+    void should_face_north_when_execute_command_l_given_0_1_E() {
+        MarsRover marsRover = build01EMarsRover();
 
         String report = marsRover.executeCommand("L");
 
@@ -71,9 +76,7 @@ public class MarsRoverTest {
 
     @Test
     void should_face_south_when_execute_command_r_given_0_1_E() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("R");
+        MarsRover marsRover = build01EMarsRover();
 
         String report = marsRover.executeCommand("R");
 
@@ -82,9 +85,7 @@ public class MarsRoverTest {
 
     @Test
     void should_move_forward_when_execute_command_m_given_0_1_E() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("R");
+        MarsRover marsRover = build01EMarsRover();
 
         String report = marsRover.executeCommand("M");
 
@@ -93,21 +94,24 @@ public class MarsRoverTest {
 
     @Test
     void should_move_backward_when_execute_command_m_given_0_1_E() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("R");
+        MarsRover marsRover = build01EMarsRover();
 
         String report = marsRover.executeCommand("B");
 
         assertEquals("-1:1:E", report);
     }
 
-    @Test
-    void should_face_east_when_execute_command_l_given_1_0_S() {
+    MarsRover build10SMarsRover(){
         MarsRover marsRover = new MarsRover();
         marsRover.executeCommand("R");
         marsRover.executeCommand("M");
         marsRover.executeCommand("R");
+        return marsRover;
+    }
+
+    @Test
+    void should_face_east_when_execute_command_l_given_1_0_S() {
+        MarsRover marsRover = build10SMarsRover();
 
         String report = marsRover.executeCommand("L");
 
@@ -116,10 +120,7 @@ public class MarsRoverTest {
 
     @Test
     void should_face_west_when_execute_command_r_given_1_0_S() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("R");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("R");
+        MarsRover marsRover = build10SMarsRover();
 
         String report = marsRover.executeCommand("R");
 
@@ -128,10 +129,7 @@ public class MarsRoverTest {
 
     @Test
     void should_move_forward_when_execute_command_m_given_1_0_S() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("R");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("R");
+        MarsRover marsRover = build10SMarsRover();
 
         String report = marsRover.executeCommand("M");
 
@@ -140,24 +138,26 @@ public class MarsRoverTest {
 
     @Test
     void should_move_backward_when_execute_command_m_given_1_0_S() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("R");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("R");
+        MarsRover marsRover = build10SMarsRover();
 
         String report = marsRover.executeCommand("B");
 
         assertEquals("1:1:S", report);
     }
 
-    @Test
-    void should_face_south_when_execute_command_l_given_1_1_W() {
+    MarsRover build11WMarsRover(){
         MarsRover marsRover = new MarsRover();
         marsRover.executeCommand("R");
         marsRover.executeCommand("M");
         marsRover.executeCommand("L");
         marsRover.executeCommand("M");
         marsRover.executeCommand("L");
+        return marsRover;
+    }
+
+    @Test
+    void should_face_south_when_execute_command_l_given_1_1_W() {
+        MarsRover marsRover = build11WMarsRover();
 
         String report = marsRover.executeCommand("L");
 
@@ -166,12 +166,7 @@ public class MarsRoverTest {
 
     @Test
     void should_face_north_when_execute_command_r_given_1_1_W() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("R");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("L");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("L");
+        MarsRover marsRover = build11WMarsRover();
 
         String report = marsRover.executeCommand("R");
 
@@ -180,12 +175,7 @@ public class MarsRoverTest {
 
     @Test
     void should_move_forward_when_execute_command_m_given_1_1_W() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("R");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("L");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("L");
+        MarsRover marsRover = build11WMarsRover();
 
         String report = marsRover.executeCommand("M");
 
@@ -194,12 +184,7 @@ public class MarsRoverTest {
 
     @Test
     void should_move_backward_when_execute_command_m_given_1_1_W() {
-        MarsRover marsRover = new MarsRover();
-        marsRover.executeCommand("R");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("L");
-        marsRover.executeCommand("M");
-        marsRover.executeCommand("L");
+        MarsRover marsRover = build11WMarsRover();
 
         String report = marsRover.executeCommand("B");
 
