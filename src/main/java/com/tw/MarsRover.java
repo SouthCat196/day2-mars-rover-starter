@@ -1,19 +1,22 @@
 package com.tw;
 
+import com.tw.entity.Coordinate;
+import com.tw.orientation.NorthOrientation;
+import com.tw.orientation.Orientation;
+
 public class MarsRover {
 
-    private int abscissa;
-    private int ordinate;
-    private String direction;
+    private Coordinate coordinate;
+
+    private Orientation orientation;
 
     public MarsRover() {
-        abscissa = 0;
-        ordinate = 0;
-        direction = "N";
+        coordinate = new Coordinate(0, 0);
+        orientation = new NorthOrientation();
     }
 
     public String showStatus() {
-        return String.format("%s:%s:%s", abscissa, ordinate, direction);
+        return String.format("%s:%s:%s", coordinate.getAbscissa(), coordinate.getOrdinate(), orientation.getDirection());
     }
 
     public String executeCommand(String command) {
