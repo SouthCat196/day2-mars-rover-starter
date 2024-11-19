@@ -30,8 +30,15 @@ public class MarsRover {
         if (Command.M.getCommand().equals(command)) {
             moveForward();
         }
+        if (Command.B.getCommand().equals(command)) {
+            moveBackward();
+        }
 
         return showStatus();
+    }
+
+    private void moveBackward() {
+        coordinate = orientation.moveBackward(coordinate);
     }
 
     private void moveForward() {

@@ -23,4 +23,9 @@ public class EastOrientation implements Orientation {
     public Coordinate moveForward(Coordinate coordinate) {
         return new Coordinate(coordinate.getAbscissa() + 1, coordinate.getOrdinate());
     }
+
+    @Override
+    public Coordinate moveBackward(Coordinate coordinate) {
+        return new Coordinate(coordinate.getAbscissa() - 1, coordinate.getOrdinate());
+    }
 }

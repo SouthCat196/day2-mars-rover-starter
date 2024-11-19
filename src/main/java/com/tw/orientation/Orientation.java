@@ -12,4 +12,6 @@ public interface Orientation {
     Orientation turnRight();
 
     Coordinate moveForward(Coordinate coordinate);
+
+    Coordinate moveBackward(Coordinate coordinate);
 }

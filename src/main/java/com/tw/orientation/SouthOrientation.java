@@ -23,4 +23,9 @@ public class SouthOrientation implements Orientation {
     public Coordinate moveForward(Coordinate coordinate) {
         return new Coordinate(coordinate.getAbscissa(), coordinate.getOrdinate() - 1);
     }
+
+    @Override
+    public Coordinate moveBackward(Coordinate coordinate) {
+        return new Coordinate(coordinate.getAbscissa(), coordinate.getOrdinate() + 1);
+    }
 }
