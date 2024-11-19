@@ -40,4 +40,14 @@ public class MarsRoverTest {
         assertEquals("0:0:E", report);
     }
 
+    @Test
+    void should_move_forward_when_execute_command_m_given_0_0_N() {
+        MarsRover marsRover = new MarsRover();
+
+        String report = marsRover.executeCommand("M");
+
+        assertEquals("0:1:N", report);
+    }
+
+
 }
