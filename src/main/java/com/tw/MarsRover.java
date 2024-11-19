@@ -27,8 +27,15 @@ public class MarsRover {
         if (Command.R.getCommand().equals(command)) {
             turnRight();
         }
+        if (Command.M.getCommand().equals(command)) {
+            moveForward();
+        }
 
         return showStatus();
+    }
+
+    private void moveForward() {
+        coordinate = orientation.moveForward(coordinate);
     }
 
     private void turnLeft() {

@@ -1,5 +1,6 @@
 package com.tw.orientation;
 
+import com.tw.entity.Coordinate;
 import com.tw.marsRoverEnum.Direction;
 
 public interface Orientation {
@@ -9,4 +10,6 @@ public interface Orientation {
     Orientation turnLeft();
 
     Orientation turnRight();
+
+    Coordinate moveForward(Coordinate coordinate);
 }

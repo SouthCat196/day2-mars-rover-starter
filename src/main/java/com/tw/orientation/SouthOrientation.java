@@ -1,5 +1,6 @@
 package com.tw.orientation;
 
+import com.tw.entity.Coordinate;
 import com.tw.marsRoverEnum.Direction;
 
 public class SouthOrientation implements Orientation {
@@ -16,5 +17,10 @@ public class SouthOrientation implements Orientation {
     @Override
     public Orientation turnRight() {
         return new WestOrientation();
+    }
+
+    @Override
+    public Coordinate moveForward(Coordinate coordinate) {
+        return new Coordinate(coordinate.getAbscissa(), coordinate.getOrdinate() - 1);
     }
 }
