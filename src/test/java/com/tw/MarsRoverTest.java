@@ -102,7 +102,53 @@ public class MarsRoverTest {
         assertEquals("-1:1:E", report);
     }
 
+    @Test
+    void should_face_east_when_execute_command_l_given_1_0_S() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.executeCommand("R");
+        marsRover.executeCommand("M");
+        marsRover.executeCommand("R");
 
+        String report = marsRover.executeCommand("L");
+
+        assertEquals("1:0:E", report);
+    }
+
+    @Test
+    void should_face_west_when_execute_command_r_given_1_0_S() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.executeCommand("R");
+        marsRover.executeCommand("M");
+        marsRover.executeCommand("R");
+
+        String report = marsRover.executeCommand("R");
+
+        assertEquals("1:0:W", report);
+    }
+
+    @Test
+    void should_move_forward_when_execute_command_m_given_1_0_S() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.executeCommand("R");
+        marsRover.executeCommand("M");
+        marsRover.executeCommand("R");
+
+        String report = marsRover.executeCommand("M");
+
+        assertEquals("1:-1:S", report);
+    }
+
+    @Test
+    void should_move_backward_when_execute_command_m_given_1_0_S() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.executeCommand("R");
+        marsRover.executeCommand("M");
+        marsRover.executeCommand("R");
+
+        String report = marsRover.executeCommand("B");
+
+        assertEquals("1:1:S", report);
+    }
 
 
 }
