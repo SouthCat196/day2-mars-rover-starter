@@ -1,6 +1,7 @@
 package com.tw;
 
 import com.tw.entity.Coordinate;
+import com.tw.marsRoverEnum.Command;
 import com.tw.orientation.NorthOrientation;
 import com.tw.orientation.Orientation;
 
@@ -20,9 +21,23 @@ public class MarsRover {
     }
 
     public String executeCommand(String command) {
-        if("L".equals(command)){
-            return "0:0:W";
+        if (Command.L.getCommand().equals(command)) {
+            turnLeft();
         }
-        return null;
+        if (Command.R.getCommand().equals(command)) {
+            turnRight();
+        }
+
+        return showStatus();
     }
+
+    private void turnLeft() {
+        orientation = orientation.turnLeft();
+    }
+
+    private void turnRight() {
+        orientation = orientation.turnRight();
+    }
+
+
 }
