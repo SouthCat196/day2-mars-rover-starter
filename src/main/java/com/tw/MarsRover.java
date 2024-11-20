@@ -1,5 +1,6 @@
 package com.tw;
 
+import com.tw.command.*;
 import com.tw.entity.Coordinate;
 import com.tw.marsRoverEnum.Command;
 import com.tw.orientation.NorthOrientation;
@@ -15,21 +16,21 @@ public class MarsRover {
 
     private Orientation orientation;
 
-    private final Map<Character, Consumer<Void>> commandActions;
+    private final Map<Character, CommandStrategy> commandStrategies;
 
     public MarsRover() {
         coordinate = new Coordinate(0, 0);
         orientation = new NorthOrientation();
-        commandActions = initializeCommandActions();
+        commandStrategies = initializeCommandActions();
     }
 
-    private Map<Character, Consumer<Void>> initializeCommandActions() {
-        Map<Character, Consumer<Void>> actions = new HashMap<>();
-        actions.put(Command.L.getCommand(), v -> turnLeft());
-        actions.put(Command.R.getCommand(), v -> turnRight());
-        actions.put(Command.M.getCommand(), v -> moveForward());
-        actions.put(Command.B.getCommand(), v -> moveBackward());
-        return actions;
+    private Map<Character, CommandStrategy> initializeCommandActions() {
+        Map<Character, CommandStrategy> strategies = new HashMap<>();
+        strategies.put(Command.L.getCommand(), new TurnLeftCommand());
+        strategies.put(Command.R.getCommand(), new TurnRightCommand());
+        strategies.put(Command.M.getCommand(), new MoveForwardCommand());
+        strategies.put(Command.B.getCommand(), new MoveBackwardCommand());
+        return strategies;
     }
 
     public String showStatus() {
@@ -45,9 +46,9 @@ public class MarsRover {
     }
 
     private void executeCommandItem(char commandItem) {
-        Consumer<Void> action = commandActions.get(commandItem);
-        if (action != null) {
-            action.accept(null);
+        CommandStrategy strategy = commandStrategies.get(commandItem);
+        if (strategy != null) {
+            strategy.execute(this);
         } else {
             throw new IllegalArgumentException("Invalid command: " + commandItem);
         }
@@ -69,5 +70,19 @@ public class MarsRover {
         orientation = orientation.turnRight();
     }
 
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
 
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public Orientation getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
+    }
 }
