@@ -29,22 +29,6 @@ public class MarsRover {
         return showStatus();
     }
 
-    private void moveBackward() {
-        coordinate = orientation.moveBackward(coordinate);
-    }
-
-    private void moveForward() {
-        coordinate = orientation.moveForward(coordinate);
-    }
-
-    private void turnLeft() {
-        orientation = orientation.turnLeft();
-    }
-
-    private void turnRight() {
-        orientation = orientation.turnRight();
-    }
-
     public Coordinate getCoordinate() {
         return coordinate;
     }
