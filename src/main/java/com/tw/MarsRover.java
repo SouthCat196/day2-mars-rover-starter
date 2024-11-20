@@ -11,7 +11,6 @@ public class MarsRover {
 
     private Orientation orientation;
 
-
     public MarsRover() {
         coordinate = new Coordinate(0, 0);
         orientation = new NorthOrientation();
@@ -23,8 +22,8 @@ public class MarsRover {
 
     public String executeCommand(String commands) {
         commands.chars()
-                .mapToObj(c -> (char) c)
-                .map(Command::fromChar) // 将字符映射到 Command 枚举
+                .mapToObj(command -> (char) command)
+                .map(Command::fromChar)
                 .forEach(command -> command.execute(this));
         return showStatus();
     }
