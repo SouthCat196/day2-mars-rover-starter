@@ -5,15 +5,31 @@ import com.tw.marsRoverEnum.Command;
 import com.tw.orientation.NorthOrientation;
 import com.tw.orientation.Orientation;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+
 public class MarsRover {
 
     private Coordinate coordinate;
 
     private Orientation orientation;
 
+    private final Map<Character, Consumer<Void>> commandActions;
+
     public MarsRover() {
         coordinate = new Coordinate(0, 0);
         orientation = new NorthOrientation();
+        commandActions = initializeCommandActions();
+    }
+
+    private Map<Character, Consumer<Void>> initializeCommandActions() {
+        Map<Character, Consumer<Void>> actions = new HashMap<>();
+        actions.put(Command.L.getCommand(), v -> turnLeft());
+        actions.put(Command.R.getCommand(), v -> turnRight());
+        actions.put(Command.M.getCommand(), v -> moveForward());
+        actions.put(Command.B.getCommand(), v -> moveBackward());
+        return actions;
     }
 
     public String showStatus() {
@@ -29,17 +45,11 @@ public class MarsRover {
     }
 
     private void executeCommandItem(char commandItem) {
-        if (Command.L.getCommand() == commandItem) {
-            turnLeft();
-        }
-        if (Command.R.getCommand() == (commandItem)) {
-            turnRight();
-        }
-        if (Command.M.getCommand() == (commandItem)) {
-            moveForward();
-        }
-        if (Command.B.getCommand() == (commandItem)) {
-            moveBackward();
+        Consumer<Void> action = commandActions.get(commandItem);
+        if (action != null) {
+            action.accept(null);
+        } else {
+            throw new IllegalArgumentException("Invalid command: " + commandItem);
         }
     }
 
